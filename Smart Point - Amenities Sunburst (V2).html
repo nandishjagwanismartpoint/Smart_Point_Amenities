@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Point — Amenities by market sunburst</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Roboto:wght@400;500&display=swap">
+<style>
+  body { font-family: 'Roboto', -apple-system, Segoe UI, Arial, sans-serif; background:#fff; color:#191C25; margin:0; padding:24px; }
+  #legend2 { display:flex; flex-wrap:wrap; gap:12px 16px; margin-bottom:14px; font-size:12px; color:#515160; justify-content:center; }
+  #tooltip2-UK, #tooltip2-ES { position:absolute; pointer-events:none; background:#fff; border:1px solid #D0D2D4; border-radius:8px; padding:8px 10px; font-size:12px; line-height:1.6; color:#191C25; display:none; max-width:230px; z-index:5; box-shadow:0 2px 10px rgba(25,28,37,0.08); }
+  h1 { font-family:'Rubik', sans-serif; font-size:19px; font-weight:700; text-align:center; color:#191C25; }
+  .note { text-align:center; font-size:12px; color:#969CA3; margin-top:10px; }
+  .chartcol { flex:1 1 300px; max-width:380px; }
+  .charttitle { text-align:center; font-family:'Rubik',sans-serif; font-weight:500; font-size:14px; margin-bottom:6px; }
+</style>
+</head>
+<body>
+<h1>Smart Point — Amenities by market</h1>
+<div id="legend2"></div>
+<div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
+  <div class="chartcol">
+    <div style="position:relative;">
+      <svg id="sunburst2-UK" viewBox="0 0 660 660" style="width:100%;height:auto;display:block;"></svg>
+      <div id="tooltip2-UK"></div>
+    </div>
+  </div>
+  <div class="chartcol">
+    <div style="position:relative;">
+      <svg id="sunburst2-ES" viewBox="0 0 660 660" style="width:100%;height:auto;display:block;"></svg>
+      <div id="tooltip2-ES"></div>
+    </div>
+  </div>
+</div>
+<p class="note">Category (inner ring) &rarr; Amenity (outer ring, colored by way of working). Local Commerce group excluded.<br>Click a category to zoom in, click the center to zoom back out. Hover an amenity for its partner, commission &amp; benefit.</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+(function(){
+const categoryColor = {
+  "Assistance": "#7FA8BF",
+  "Lifestyle": "#C98B65",
+  "Kids": "#C97FA0",
+  "Pets": "#9080A8",
+  "Mobility": "#4F7080",
+  "Food": "#7FA37F",
+  "Corporate Amenities": "#9A938C"
+};
+const setupColor = {
+  "Infocard": "#6E8CA0",
+  "Professional Service / Infocard (A/B Test)": "#8C7CA0",
+  "Professional Service / Marketplace": "#6FA396",
+  "Subscription": "#C9A96E",
+  "Feed": "#B27890",
+  "Corporate Referral": "#B2705A",
+  "Not specified": "#A8A29B"
+};
+const black = "#191C25";
+
+const dataset = [
+  {name:"Assistance", partners:[
+    {name:"Fantastic Services", commission:"10% of all orders", benefit:"5% - 25% off on all orders", amenities:[
+      {name:"Cleaning Service", location:"UK", setup:"Professional Service / Infocard (A/B Test)"},
+      {name:"Gardening", location:"UK", setup:"Infocard"},
+      {name:"Handyman Services", location:"UK", setup:"Infocard"}
+    ]},
+    {name:"Laundryheap", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
+      {name:"Laundry Service", location:"UK", setup:"Infocard"}
+    ]},
+    {name:"Unbiased", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
+      {name:"Financial Advice", location:"UK", setup:"Infocard", commission:"£5 per customer", benefit:"First Consultation Free"}
+    ]},
+    {name:"Owings", commission:"5€ + 21% VAT", benefit:"Exclusive prices", amenities:[
+      {name:"Nutricionista y Dietista Clínica", location:"ES", setup:"Professional Service / Marketplace"},
+      {name:"Servicio de Psicología", location:"ES", setup:"Professional Service / Marketplace"},
+      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace"}
+    ]}
+  ]},
+  {name:"Lifestyle", partners:[
+    {name:"FIIT", commission:"92% markup (resell model)", benefit:"65% off monthly subscription", amenities:[
+      {name:"FIIT Workout App", location:"UK", setup:"Subscription"},
+      {name:"FIIT Workout App", location:"ES", setup:"Subscription"}
+    ]},
+    {name:"Preply", commission:"90% of net trial lesson + $50-$120 per conversion", benefit:"70% off trial lesson", amenities:[
+      {name:"Preply", location:"UK", setup:"Infocard"},
+      {name:"Preply", location:"ES", setup:"Infocard"}
+    ]},
+    {name:"LanguaTalk", commission:"35% recurring commission", benefit:"25% off annual plans", amenities:[
+      {name:"AI Language Learning", location:"UK", setup:"Infocard"},
+      {name:"Aprendizaje de Idiomas con IA", location:"ES", setup:"Infocard"}
+    ]},
+    {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off on all orders", amenities:[
+      {name:"Experiencias de Regalo", location:"ES", setup:"Infocard"}
+    ]},
+    {name:"Urban", commission:"5% of all orders", benefit:"5% off first order", amenities:[
+      {name:"Massages at Home", location:"UK", setup:"Infocard", commission:"5% all orders", benefit:"5% new users"}
+    ]},
+    {name:"OccasionGenius", commission:"None; Smart Point pays $300/month", benefit:"None", amenities:[
+      {name:"Local Events", location:"ES", setup:"Feed"}
+    ]},
+    {name:"Urban Sports Club (now Wellhub)", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Multi-Gym Pass", location:"ES", setup:"Subscription", commission:"27€ per user, per month", benefit:"40% off"}
+    ]},
+    {name:"Fever", commission:"6% of sales", benefit:"None", amenities:[
+      {name:"Movie Theatre Tickets", location:"UK", setup:"Infocard"},
+      {name:"Outdoor Games Edinburgh", location:"UK", setup:"Infocard"}
+    ]},
+    {name:"Playtomic", commission:"10 EUR per new customer", benefit:"30% off off-peak hours", amenities:[
+      {name:"Padel Court Reservation", location:"ES", setup:"Infocard"}
+    ]}
+  ]},
+  {name:"Kids", partners:[
+    {name:"Bubble", commission:"None; to be discussed after trial period", benefit:"£15 off first order", amenities:[
+      {name:"Find the Perfect Babysitter", location:"UK", setup:"Professional Service / Infocard (A/B Test)"},
+      {name:"Babysitting", location:"UK", setup:"Professional Service / Marketplace"},
+      {name:"Childminder", location:"UK", setup:"Professional Service / Marketplace"},
+      {name:"After-School Care", location:"UK", setup:"Professional Service / Marketplace"}
+    ]}
+  ]},
+  {name:"Pets", partners:[
+    {name:"Pawshake", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Dog Walker", location:"UK", setup:"Professional Service / Marketplace"},
+      {name:"Doggy Day Care", location:"UK", setup:"Professional Service / Marketplace"},
+      {name:"Dog Boarding", location:"UK", setup:"Professional Service / Marketplace"}
+    ]}
+  ]},
+  {name:"Mobility", partners:[
+    {name:"Fixter", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Valet MOT", location:"UK", setup:"Infocard"},
+      {name:"Car Servicing", location:"UK", setup:"Infocard"}
+    ]},
+    {name:"Welcome Pickups", commission:"€5 per booking", benefit:"None", amenities:[
+      {name:"Private Airport Transfers", location:"UK", setup:"Infocard"},
+      {name:"Traslados VIP al Aeropuerto", location:"ES", setup:"Infocard"}
+    ]},
+    {name:"AnyVan", commission:"30% per booking", benefit:"€20 / £20 off order", amenities:[
+      {name:"Home Removals", location:"UK", setup:"Infocard"},
+      {name:"Mudanzas Sin Estrés", location:"ES", setup:"Infocard"}
+    ]},
+    {name:"Cooltra", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Cooltra x Holded", location:"ES", setup:"Subscription"},
+      {name:"Cooltra - Movilidad Eléctrica", location:"ES", setup:"Subscription"}
+    ]}
+  ]},
+  {name:"Food", partners:[
+    {name:"Fruiful Office", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Fruit & Veggie Boxes", location:"UK", setup:"Professional Service / Marketplace"}
+    ]}
+  ]},
+  {name:"Corporate Amenities", partners:[
+    {name:"Vending Sense", commission:"Bespoke - to be discussed", benefit:"Not specified", amenities:[
+      {name:"Smart Vending Machines", location:"UK", setup:"Corporate Referral"}
+    ]},
+    {name:"Event Disco", commission:"Bespoke - to be discussed", benefit:"Not specified", amenities:[
+      {name:"Food Truck Pop-up", location:"UK", setup:"Corporate Referral"},
+      {name:"Workshops & Live Entertainment", location:"UK", setup:"Corporate Referral"}
+    ]},
+    {name:"OneFiiT", commission:"20%", benefit:"Not specified", amenities:[
+      {name:"Virtual Workout Classes", location:"UK", setup:"Corporate Referral"}
+    ]}
+  ]}
+];
+
+function textOn(hex){
+  const c = d3.rgb(hex);
+  const lum = (0.299*c.r + 0.587*c.g + 0.114*c.b) / 255;
+  return lum > 0.62 ? black : "#ffffff";
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function wrapLines(name, maxCharsPerLine, maxLines){
+  const words = name.split(" ");
+  const lines = [];
+  let cur = "";
+  for (const w of words){
+    const test = cur ? cur + " " + w : w;
+    if (test.length <= maxCharsPerLine || !cur){
+      cur = test;
+    } else {
+      lines.push(cur);
+      cur = w;
+    }
+  }
+  if (cur) lines.push(cur);
+  if (lines.length <= maxLines) return lines;
+  const shown = lines.slice(0, maxLines);
+  let last = shown[maxLines-1];
+  if (last.length > maxCharsPerLine - 1) last = last.slice(0, maxCharsPerLine-1);
+  shown[maxLines-1] = last.trim() + "…";
+  return shown;
+}
+
+function buildTreeForLocation(loc){
+  const cats = dataset.map(cat => ({
+    name: cat.name,
+    partnerCount: new Set(cat.partners.filter(p => p.amenities.some(a => a.location === loc)).map(p => p.name)).size,
+    children: cat.partners.flatMap(p => p.amenities
+      .filter(a => a.location === loc)
+      .map(a => ({
+        name: a.name,
+        partner: p.name,
+        commission: a.commission || p.commission,
+        benefit: a.benefit || p.benefit,
+        setup: a.setup,
+        value: 1
+      })))
+  })).filter(cat => cat.children.length > 0);
+  return { name: "root", children: cats };
+}
+
+function initSunburst(loc, svgSel, tooltipSel, rootLabel){
+  const root = d3.hierarchy(buildTreeForLocation(loc)).sum(d => d.value || 0);
+  const radius = 300;
+  d3.partition().size([2*Math.PI, radius])(root);
+
+  const holeR = 45, categoryOuterR = 190, partnerOuterR = radius;
+  root.each(d => {
+    if (d.depth === 0){ d.y0 = 0; d.y1 = holeR; }
+    else if (d.depth === 1){ d.y0 = holeR; d.y1 = categoryOuterR; }
+    else { d.y0 = categoryOuterR; d.y1 = partnerOuterR; }
+  });
+  root.each(d => d.current = { x0: d.x0, x1: d.x1, y0: d.y0, y1: d.y1 });
+
+  const nodes = root.descendants().filter(d => d.depth > 0);
+  let focus = root;
+
+  function fillOf(d){
+    if (d.depth === 1) return categoryColor[d.data.name] || "#969CA3";
+    return setupColor[d.data.setup] || setupColor["Not specified"];
+  }
+
+  const arcGen = d3.arc()
+    .startAngle(d => d.x0).endAngle(d => d.x1)
+    .padAngle(0.006)
+    .innerRadius(d => d.y0)
+    .outerRadius(d => Math.max(d.y0, d.y1 - 1.5));
+
+  const svg = d3.select(svgSel);
+  const g = svg.append("g").attr("transform", "translate(330,330)");
+  const tooltip = d3.select(tooltipSel);
+  const container = tooltip.node().parentNode;
+
+  function tipHtml(d){
+    if (d.depth === 1){
+      return "<b>"+esc(d.data.name)+"</b><br>"+d.data.partnerCount+" partner"+(d.data.partnerCount===1?"":"s")+" &middot; "+d.value+" amenit"+(d.value===1?"y":"ies");
+    }
+    return "<b>"+esc(d.data.name)+"</b><br>Partner: "+esc(d.data.partner)+
+      "<br>Commission: "+esc(d.data.commission||"Not specified")+
+      "<br>User benefit: "+esc(d.data.benefit||"Not specified")+
+      "<br>Way of working: "+esc(d.data.setup||"Not specified");
+  }
+
+  function arcVisible(d){ return d.y1 <= partnerOuterR + 0.5 && d.y0 >= -0.5 && d.x1 > d.x0; }
+  function labelVisible(d){ return arcVisible(d) && d.y0 >= holeR - 0.5 && (d.x1 - d.x0) > 0.06; }
+  function labelTransform(d){
+    const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+    const y = (d.y0 + d.y1) / 2;
+    return "rotate("+(x-90)+") translate("+y+",0) rotate("+(x < 180 ? 0 : 180)+")";
+  }
+  function fontSizeOf(d){ return d.depth === 1 ? 13 : 10.5; }
+  function maxCharsOf(d){ return d.depth === 1 ? 20 : 16; }
+  function renderLines(textEl, geom, d){
+    const sel = d3.select(textEl);
+    sel.selectAll("tspan").remove();
+    const angW = Math.max(0, geom.x1 - geom.x0);
+    const midR = (geom.y0 + geom.y1) / 2;
+    const arcLen = angW * midR;
+    const fontSize = fontSizeOf(d);
+    const lineH = fontSize * 1.15;
+    const maxLines = Math.max(1, Math.min(3, Math.floor(arcLen / lineH)));
+    const lines = wrapLines(d.data.name, maxCharsOf(d), maxLines);
+    const lhEm = 1.1;
+    lines.forEach((line, i) => {
+      sel.append("tspan")
+        .attr("x", 0)
+        .attr("dy", i === 0 ? (0.35 - (lines.length - 1) * lhEm / 2) + "em" : lhEm + "em")
+        .text(line);
+    });
+  }
+
+  const path = g.selectAll("path").data(nodes).join("path")
+    .attr("fill", fillOf)
+    .attr("fill-opacity", d => arcVisible(d.current) ? 1 : 0)
+    .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
+    .attr("stroke", "#ffffff")
+    .attr("stroke-width", 1)
+    .style("cursor", d => d.children ? "pointer" : "default")
+    .attr("d", d => arcGen(d.current));
+
+  path.on("click", clicked)
+    .on("mousemove", function(event, d){
+      if (!arcVisible(d.current)) return;
+      const related = new Set(d.ancestors().concat(d.descendants()));
+      path.attr("opacity", n => related.has(n) ? 1 : 0.28);
+      const rect = container.getBoundingClientRect();
+      tooltip.style("display","block")
+        .style("left", Math.min(event.clientX - rect.left + 14, rect.width - 235) + "px")
+        .style("top", Math.max(event.clientY - rect.top - 10, 0) + "px")
+        .html(tipHtml(d));
+    })
+    .on("mouseleave", function(){
+      path.attr("opacity", 1);
+      tooltip.style("display","none");
+    });
+
+  const label = g.append("g").attr("pointer-events","none").selectAll("text")
+    .data(nodes).join("text")
+    .attr("text-anchor","middle")
+    .style("font-weight","500").style("font-family","'Rubik',sans-serif")
+    .style("fill-opacity", d => +labelVisible(d.current))
+    .style("font-size", d => fontSizeOf(d)+"px")
+    .attr("transform", d => labelTransform(d.current))
+    .attr("fill", d => textOn(fillOf(d)));
+
+  label.each(function(d){ renderLines(this, d.current, d); });
+
+  const centerCircle = g.append("circle")
+    .attr("r", holeR).attr("fill", "#F6F7F8")
+    .attr("stroke", "#D0D2D4").attr("stroke-width", 0.5)
+    .style("cursor", "pointer")
+    .on("click", (event) => clicked(event, focus.parent || root));
+
+  const centerLabel = g.append("text")
+    .attr("text-anchor","middle").attr("dy","0.35em")
+    .style("font-size","12px").style("font-weight","500").style("font-family","'Rubik',sans-serif")
+    .attr("pointer-events","none").attr("fill", "#191C25")
+    .text(rootLabel);
+
+  function clicked(event, p){
+    if (!p || p === focus) return;
+    if (p !== root && !p.children) return;
+    focus = p;
+    centerLabel.text(p === root ? rootLabel : p.data.name);
+
+    root.each(d => {
+      const tx0 = Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI;
+      const tx1 = Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI;
+      let ty0, ty1;
+      if (d === p){ ty0 = 0; ty1 = holeR; }
+      else if (p.children && p.children.indexOf(d) !== -1){ ty0 = holeR; ty1 = partnerOuterR; }
+      else { ty0 = d.y0; ty1 = d.y1; }
+      d.target = { x0: tx0, x1: tx1, y0: ty0, y1: ty1 };
+    });
+
+    label.each(function(d){ renderLines(this, d.target, d); });
+
+    const t = g.transition().duration(650);
+    path.transition(t)
+      .tween("data", d => { const i = d3.interpolate(d.current, d.target); return time => d.current = i(time); })
+      .attr("fill-opacity", d => arcVisible(d.target) ? 1 : 0)
+      .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none")
+      .attrTween("d", d => () => arcGen(d.current));
+    label.transition(t)
+      .style("fill-opacity", d => +labelVisible(d.target))
+      .attrTween("transform", d => () => labelTransform(d.current));
+  }
+}
+
+initSunburst("UK", "#sunburst2-UK", "#tooltip2-UK", "UK");
+initSunburst("ES", "#sunburst2-ES", "#tooltip2-ES", "Spain");
+
+const legendData = Object.keys(setupColor);
+d3.select("#legend2").selectAll("span").data(legendData).join("span")
+  .style("display","flex").style("align-items","center").style("gap","5px")
+  .html(d => "<span style=\"width:11px;height:11px;border-radius:3px;background:"+setupColor[d]+";display:inline-block;border:0.5px solid #D0D2D4;\"></span>"+esc(d));
+})();
+</script>
+</body>
+</html>

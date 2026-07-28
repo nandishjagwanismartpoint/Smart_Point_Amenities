@@ -20,7 +20,7 @@
 </div>
 <h1>Smart Point — Amenities by market</h1>
 <p id="counts" style="text-align:center;font-size:13px;color:#515160;margin:0 0 4px;"></p>
-<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 27 Jul 2026</p>
+<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 28 Jul 2026</p>
 <div id="legend2"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
   <div class="chartcol">
@@ -56,6 +56,7 @@ const setupColor = {
   "Subscription": "#C9A96E",
   "Feed": "#B27890",
   "Corporate Referral": "#B2705A",
+  "Webview Integration": "#5C7A9E",
   "Not specified": "#A8A29B"
 };
 const black = "#191C25";
@@ -83,6 +84,10 @@ const dataset = [
     ]},
     {name:"Mia Psicologia", commission:"5€ per session", benefit:"Exclusive prices", amenities:[
       {name:"Psicologia", location:"ES", setup:"Professional Service / Marketplace"}
+    ]},
+    {name:"Lavalocker", commission:"Own Service", benefit:"Exclusive prices", amenities:[
+      {name:"Tintoreria", location:"ES", setup:"Professional Service / Marketplace"},
+      {name:"Lavanderia", location:"ES", setup:"Professional Service / Marketplace"}
     ]}
   ]},
   {name:"Lifestyle", partners:[
@@ -90,7 +95,7 @@ const dataset = [
       {name:"FIIT Workout App", location:"UK", setup:"Subscription"},
       {name:"FIIT Workout App", location:"ES", setup:"Subscription"}
     ]},
-    {name:"Preply", commission:"90% of net trial lesson + $50 - $120 per conversion", benefit:"70% off trial lesson", amenities:[
+    {name:"Preply", commission:"90% of net trial lesson + $50-$120 per conversion", benefit:"70% off trial lesson", amenities:[
       {name:"Preply", location:"UK", setup:"Infocard"},
       {name:"Preply", location:"ES", setup:"Infocard"}
     ]},
@@ -104,7 +109,7 @@ const dataset = [
     {name:"Urban", commission:"5% of all orders", benefit:"5% off first order", amenities:[
       {name:"Massages at Home", location:"UK", setup:"Infocard", commission:"5% all orders", benefit:"5% new users"}
     ]},
-    {name:"OccasionGenius", commission:"None ; we pay $300 per month", benefit:"None", amenities:[
+    {name:"OccasionGenius", commission:"None; Smart Point pays $300/month", benefit:"None", amenities:[
       {name:"Local Events", location:"ES", setup:"Feed"}
     ]},
     {name:"Urban Sports Club (now Wellhub)", commission:"Not specified", benefit:"Not specified", amenities:[
@@ -119,7 +124,7 @@ const dataset = [
     ]}
   ]},
   {name:"Kids", partners:[
-    {name:"Bubble", commission:"None ; to be discussed after trial period", benefit:"£15 off first order", amenities:[
+    {name:"Bubble", commission:"None; to be discussed after trial period", benefit:"£15 off first order", amenities:[
       {name:"Find the Perfect Babysitter", location:"UK", setup:"Professional Service / Infocard (A/B Test)"},
       {name:"Babysitting", location:"UK", setup:"Professional Service / Marketplace"},
       {name:"Childminder", location:"UK", setup:"Professional Service / Marketplace"},
@@ -146,9 +151,15 @@ const dataset = [
       {name:"Home Removals", location:"UK", setup:"Infocard"},
       {name:"Mudanzas Sin Estrés", location:"ES", setup:"Infocard"}
     ]},
-    {name:"Cooltra", commission:"Not specified", benefit:"Not specified", amenities:[
+    {name:"Cooltra", commission:"22% Approx.", benefit:"Upto 74% off", amenities:[
       {name:"Cooltra x Holded", location:"ES", setup:"Subscription"},
       {name:"Cooltra - Movilidad Eléctrica", location:"ES", setup:"Subscription"}
+    ]},
+    {name:"El Colibri", commission:"5%- 10%", benefit:"Exclusive prices", amenities:[
+      {name:"Lavado de Coches", location:"ES", setup:"Professional Service / Marketplace"}
+    ]},
+    {name:"Cafler", commission:"9%", benefit:"B2B Prices", amenities:[
+      {name:"ITV a domicilio", location:"ES", setup:"Professional Service / Marketplace"}
     ]}
   ]},
   {name:"Food", partners:[
@@ -158,6 +169,15 @@ const dataset = [
     {name:"DineIndulge / Meals.co.uk", commission:"Not specified", benefit:"Not specified", amenities:[
       {name:"Meal Prep Service", location:"UK", setup:"Infocard", commission:"5% of total service charge", benefit:"£100 off first order"},
       {name:"Private Chef", location:"UK", setup:"Not specified", commission:"5%", benefit:"5% off"}
+    ]},
+    {name:"Fudeat", commission:"5%", benefit:"5% on first 50 orders", amenities:[
+      {name:"Catering", location:"ES", setup:"Webview Integration"}
+    ]},
+    {name:"Knoweats", commission:"10€ per subscriber", benefit:"20€ off first order", amenities:[
+      {name:"Comidas Sanas", location:"ES", setup:"Infocard"}
+    ]},
+    {name:"Disfruta y Verdura", commission:"3%", benefit:"25% off first order", amenities:[
+      {name:"Fruta y Verdura Para Hogar", location:"ES", setup:"Infocard"}
     ]}
   ]},
   {name:"Corporate Amenities", partners:[

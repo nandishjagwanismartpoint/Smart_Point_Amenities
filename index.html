@@ -350,7 +350,10 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
     return "rotate("+(x-90)+") translate("+y+",0) rotate("+(x < 180 ? 0 : 180)+")";
   }
   function fontSizeOf(d){ return d.depth === 1 ? 13 : 10.5; }
-  function maxCharsOf(d){ return d.depth === 1 ? 20 : 16; }
+  function maxCharsFor(arcLen, fontSize){
+    const avgCharW = fontSize * 0.58;
+    return Math.max(3, Math.floor((arcLen * 0.92) / avgCharW));
+  }
   function renderLines(textEl, geom, d){
     const sel = d3.select(textEl);
     sel.selectAll("tspan").remove();
@@ -360,7 +363,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
     const fontSize = fontSizeOf(d);
     const lineH = fontSize * 1.15;
     const maxLines = Math.max(1, Math.min(3, Math.floor(arcLen / lineH)));
-    const lines = wrapLines(d.data.name, maxCharsOf(d), maxLines);
+    const lines = wrapLines(d.data.name, maxCharsFor(arcLen, fontSize), maxLines);
     const lhEm = 1.1;
     lines.forEach((line, i) => {
       sel.append("tspan")

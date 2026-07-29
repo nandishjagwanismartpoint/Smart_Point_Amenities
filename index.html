@@ -319,7 +319,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
     .style("font-weight", "500")
     .attr("visibility", "hidden");
   function textWidthPx(str, fontSizePx){
-    measureText.style("font-size", fontSizePx + "px").text(str);
+    measureText.style("font-size", fontSizePx).text(str);
     return measureText.node().getComputedTextLength();
   }
   function wrapLinesByWidth(name, maxWidthPx, maxLines, fontSizePx){
@@ -428,7 +428,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
     .attr("text-anchor","middle")
     .style("font-weight","500").style("font-family","'Rubik',sans-serif")
     .style("fill-opacity", d => +labelVisible(d.current))
-    .style("font-size", d => fontSizeOf(d)+"px")
+    .style("font-size", d => fontSizeOf(d))
     .attr("transform", d => labelTransform(d.current))
     .attr("fill", d => textOn(fillOf(d)));
 
@@ -475,7 +475,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
 
   const centerLabel = g.append("text")
     .attr("text-anchor","middle").attr("dy","0.35em")
-    .style("font-size","12px").style("font-weight","500").style("font-family","'Rubik',sans-serif")
+    .style("font-size",12).style("font-weight","500").style("font-family","'Rubik',sans-serif")
     .attr("pointer-events","none").attr("fill", "#191C25")
     .text("");
 
@@ -531,7 +531,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
       amenityInfoText.append("tspan")
         .attr("x", 0)
         .attr("dy", i === 0 ? 0 : 22)
-        .style("font-size", ln.size + "px")
+        .style("font-size", ln.size)
         .style("font-weight", ln.weight)
         .text(ln.text);
     });

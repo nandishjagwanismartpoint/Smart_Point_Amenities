@@ -514,7 +514,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
   const amenityInfo = g.append("g").attr("pointer-events", "none").style("opacity", 0);
   const amenityInfoText = amenityInfo.append("text")
     .attr("text-anchor", "middle")
-    .attr("x", 0).attr("y", -150)
+    .attr("x", 0)
     .style("font-family", "'Rubik',sans-serif");
 
   function showAmenityInfo(d){
@@ -533,10 +533,13 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
       { text: "User benefit: " + (d.data.benefit || "Not specified"), size: 13, weight: 400 },
       { text: "Setup: " + (d.data.setup || "Not specified"), size: 13, weight: 400 }
     );
+    const lineGap = 22;
+    const bottomY = -60; // keeps the last line clear of the center hole (holeR) regardless of line count
+    amenityInfoText.attr("y", bottomY - lineGap * (lines.length - 1));
     lines.forEach((ln, i) => {
       amenityInfoText.append("tspan")
         .attr("x", 0)
-        .attr("dy", i === 0 ? 0 : 22)
+        .attr("dy", i === 0 ? 0 : lineGap)
         .style("font-size", ln.size)
         .style("font-weight", ln.weight)
         .style("font-style", ln.italic ? "italic" : "normal")

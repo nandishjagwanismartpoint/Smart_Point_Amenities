@@ -363,7 +363,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
     return "<b>"+esc(d.data.name)+"</b><br>Partner: "+esc(d.data.partner)+
       "<br>Commission: "+esc(d.data.commission||"Not specified")+
       "<br>User benefit: "+esc(d.data.benefit||"Not specified")+
-      "<br>Way of working: "+esc(d.data.setup||"Not specified");
+      "<br>Setup: "+esc(d.data.setup||"Not specified");
   }
 
   function arcVisible(d){ return d.y1 <= partnerOuterR + 0.5 && d.y0 >= -0.5 && d.x1 > d.x0; }
@@ -530,7 +530,7 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
       { text: "Partner: " + d.data.partner, size: 13, weight: 400 },
       { text: "Commission: " + (d.data.commission || "Not specified"), size: 13, weight: 400 },
       { text: "User benefit: " + (d.data.benefit || "Not specified"), size: 13, weight: 400 },
-      { text: "Way of working: " + (d.data.setup || "Not specified"), size: 13, weight: 400 }
+      { text: "Setup: " + (d.data.setup || "Not specified"), size: 13, weight: 400 }
     );
     lines.forEach((ln, i) => {
       amenityInfoText.append("tspan")

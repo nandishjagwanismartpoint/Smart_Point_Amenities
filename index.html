@@ -46,7 +46,7 @@
 </div>
 <h1>Smart Point — Amenities by market</h1>
 <p id="counts" style="text-align:center;font-size:13px;color:#515160;margin:0 0 4px;"></p>
-<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 29 Jul 2026</p>
+<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 30 Jul 2026</p>
 <div id="legend2"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
   <div class="chartcol" id="chartcol-UK">
@@ -90,150 +90,150 @@ const black = "#191C25";
 const dataset = [
   {name:"Assistance", partners:[
     {name:"Fantastic Services", commission:"10% of all orders", benefit:"5% - 25% off on all orders", amenities:[
-      {name:"Cleaning Service", location:"UK", setup:"Professional Service / Infocard (A/B Test)"},
-      {name:"Gardening", location:"UK", setup:"Infocard"},
-      {name:"Handyman Services", location:"UK", setup:"Infocard"}
+      {name:"Cleaning Service", location:"UK", setup:"Professional Service / Infocard (A/B Test)", description:"Book various cleaning services"},
+      {name:"Gardening", location:"UK", setup:"Infocard", description:"Book gardening services"},
+      {name:"Handyman Services", location:"UK", setup:"Infocard", description:"Book home maintenance / handyman services"}
     ]},
     {name:"Laundryheap", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
-      {name:"Laundry Service", location:"UK", setup:"Infocard"}
+      {name:"Laundry Service", location:"UK", setup:"Infocard", description:"Laundry pick-up and delivered to your door"}
     ]},
     {name:"Unbiased", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
-      {name:"Financial Advice", location:"UK", setup:"Infocard", commission:"£5 per customer", benefit:"First Consultation Free"}
+      {name:"Financial Advice", location:"UK", setup:"Infocard", commission:"£5 per customer", benefit:"First Consultation Free", description:"Online sessions with financial advisors"}
     ]},
     {name:"Owings", commission:"5€ + 21% VAT", benefit:"Exclusive prices", amenities:[
-      {name:"Nutricionista y Dietista Clínica", location:"ES", setup:"Professional Service / Marketplace"},
-      {name:"Servicio de Psicología", location:"ES", setup:"Professional Service / Marketplace"},
-      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"Nutricionista y Dietista Clínica", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with nutritionists"},
+      {name:"Servicio de Psicología", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with psychologists"},
+      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace", description:"Book a session with nutritionists"}
     ]},
     {name:"Alura Wellness", commission:"10% per order (Check with Tati)", benefit:"10% (Check with Tati)", amenities:[
-      {name:"Thai Spa Massage", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"Thai Spa Massage", location:"ES", setup:"Professional Service / Marketplace", description:"Book a spa appointment in Barcelona"}
     ]},
     {name:"Mia Psicologia", commission:"5€ per session", benefit:"Exclusive prices", amenities:[
-      {name:"Psicologia", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"Psicologia", location:"ES", setup:"Professional Service / Marketplace", description:"Book online sessions with psychologists"}
     ]},
     {name:"Lavalocker", commission:"Own Service", benefit:"Exclusive prices", amenities:[
-      {name:"Tintoreria", location:"ES", setup:"Professional Service / Marketplace"},
-      {name:"Lavanderia", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"Tintoreria", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"},
+      {name:"Lavanderia", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"}
     ]},
     {name:"Gestoría La Ilustración", commission:"10 EUR per new customer", benefit:"None", amenities:[
-      {name:"Asesoría fiscal, laboral, contable", location:"ES", setup:"Infocard"}
+      {name:"Asesoría fiscal, laboral, contable", location:"ES", setup:"Infocard", description:"Tax and accounting advisory serviecs"}
     ]},
     {name:"Grupo Elosa", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None", benefit:"Exclusive prices"}
+      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None", benefit:"Exclusive prices", description:"Book various cleaning services"}
     ]},
     {name:"Interdomicilios", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None ; Check with Tati", benefit:"Exclusive prices"}
+      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None ; Check with Tati", benefit:"Exclusive prices", description:"Book various cleaning services"}
     ]}
   ]},
   {name:"Lifestyle", partners:[
     {name:"FIIT", commission:"92% markup (resell model)", benefit:"65% off monthly subscription", amenities:[
-      {name:"FIIT Workout App", location:"UK", setup:"Subscription"},
-      {name:"FIIT Workout App", location:"ES", setup:"Subscription"}
+      {name:"FIIT Workout App", location:"UK", setup:"Subscription", description:"Subscription to a workout app with a video library"},
+      {name:"FIIT Workout App", location:"ES", setup:"Subscription", description:"Subscription to a workout app with a video library"}
     ]},
     {name:"Preply", commission:"90% of net trial lesson + $50 - $120 per conversion", benefit:"70% off trial lesson", amenities:[
-      {name:"Preply", location:"UK", setup:"Infocard"},
-      {name:"Preply", location:"ES", setup:"Infocard"}
+      {name:"Preply", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"},
+      {name:"Preply", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"}
     ]},
     {name:"LanguaTalk", commission:"35% recurring commission", benefit:"25% off annual plans", amenities:[
-      {name:"AI Language Learning", location:"UK", setup:"Infocard"},
-      {name:"Aprendizaje de Idiomas con IA", location:"ES", setup:"Infocard"}
+      {name:"AI Language Learning", location:"UK", setup:"Infocard", description:"AI Conversational language learning subscription"},
+      {name:"Aprendizaje de Idiomas con IA", location:"ES", setup:"Infocard", description:"AI Conversational language learning subscription"}
     ]},
     {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off on all orders", amenities:[
-      {name:"Experiencias de Regalo", location:"ES", setup:"Infocard"}
+      {name:"Experiencias de Regalo", location:"ES", setup:"Infocard", description:"Buy gift cards for travel / experiences in Europe"}
     ]},
     {name:"Urban", commission:"5% of all orders", benefit:"5% off first order", amenities:[
-      {name:"Massages at Home", location:"UK", setup:"Infocard", commission:"5% all orders", benefit:"5% new users"}
+      {name:"Massages at Home", location:"UK", setup:"Infocard", commission:"5% all orders", benefit:"5% new users", description:"Book massages / wellness services for your home"}
     ]},
     {name:"OccasionGenius", commission:"None ; we pay $300 per month", benefit:"None", amenities:[
-      {name:"Local Events", location:"ES", setup:"Feed"}
+      {name:"Local Events", location:"ES", setup:"Feed", description:"Compisite feed of events happening in your city"}
     ]},
     {name:"Urban Sports Club / Wellhub", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Multi-Gym Pass", location:"ES", setup:"Subscription", commission:"27€ per user, per month", benefit:"40% off"}
+      {name:"Multi-Gym Pass", location:"ES", setup:"Subscription", commission:"27€ per user, per month", benefit:"40% off", description:"Subscription to one gym-pass with multiple partner gyms"}
     ]},
     {name:"Fever", commission:"6% of sales", benefit:"None", amenities:[
-      {name:"Movie Theatre Tickets", location:"UK", setup:"Infocard"},
-      {name:"Outdoor Games Edinburgh", location:"UK", setup:"Infocard"}
+      {name:"Movie Theatre Tickets", location:"UK", setup:"Infocard", description:"Buy vouchers for local movie theatres"},
+      {name:"Outdoor Games Edinburgh", location:"UK", setup:"Infocard", description:"Buy tickets for local outdoor events"}
     ]},
     {name:"Playtomic", commission:"10 EUR per new customer", benefit:"30% off off-peak hours", amenities:[
-      {name:"Padel Court Reservation", location:"ES", setup:"Infocard"}
+      {name:"Padel Court Reservation", location:"ES", setup:"Infocard", description:"Reserve nearby padel courts"}
     ]},
     {name:"Bloom & Wild", commission:"5%", benefit:"10%", amenities:[
-      {name:"Flower Delivery", location:"UK", setup:"Professional Service / Marketplace"}
+      {name:"Flower Delivery", location:"UK", setup:"Professional Service / Marketplace", description:"Get flowers delivered to your door"}
     ]}
   ]},
   {name:"Kids", partners:[
     {name:"Bubble", commission:"None ; to be discussed after trial period", benefit:"£15 off first order", amenities:[
-      {name:"Find the Perfect Babysitter", location:"UK", setup:"Professional Service / Infocard (A/B Test)"},
-      {name:"Babysitting", location:"UK", setup:"Professional Service / Marketplace"},
-      {name:"Childminder", location:"UK", setup:"Professional Service / Marketplace"},
-      {name:"After-School Care", location:"UK", setup:"Professional Service / Marketplace"}
+      {name:"Find the Perfect Babysitter", location:"UK", setup:"Professional Service / Infocard (A/B Test)", description:"Book a babysitter at your home"},
+      {name:"Babysitting", location:"UK", setup:"Professional Service / Marketplace", description:"Book a babysitter at your home"},
+      {name:"Childminder", location:"UK", setup:"Professional Service / Marketplace", description:"Book a babysitter - carer at their home"},
+      {name:"After-School Care", location:"UK", setup:"Professional Service / Marketplace", description:"Book a sitter for kids after school hours"}
     ]}
   ]},
   {name:"Pets", partners:[
     {name:"Pawshake", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Dog Walker", location:"UK", setup:"Professional Service / Marketplace"},
-      {name:"Doggy Day Care", location:"UK", setup:"Professional Service / Marketplace"},
-      {name:"Dog Boarding", location:"UK", setup:"Professional Service / Marketplace"}
+      {name:"Dog Walker", location:"UK", setup:"Professional Service / Marketplace", description:"Book a dog walker"},
+      {name:"Doggy Day Care", location:"UK", setup:"Professional Service / Marketplace", description:"Supervised care for full / half day"},
+      {name:"Dog Boarding", location:"UK", setup:"Professional Service / Marketplace", description:"Book a multi-day stay for your dog"}
     ]}
   ]},
   {name:"Mobility", partners:[
     {name:"Fixter", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Valet MOT", location:"UK", setup:"Infocard"},
-      {name:"Car Servicing", location:"UK", setup:"Infocard"}
+      {name:"Valet MOT", location:"UK", setup:"Infocard", description:"Car detailing, cleaning and inspection"},
+      {name:"Car Servicing", location:"UK", setup:"Infocard", description:"Vehicle Repairs and Maintenance Services"}
     ]},
     {name:"Welcome Pickups", commission:"€5 per booking", benefit:"None", amenities:[
-      {name:"Private Airport Transfers", location:"UK", setup:"Infocard"},
-      {name:"Traslados VIP al Aeropuerto", location:"ES", setup:"Infocard"}
+      {name:"Private Airport Transfers", location:"UK", setup:"Infocard", description:"Chauffeured travel to / from airports"},
+      {name:"Traslados VIP al Aeropuerto", location:"ES", setup:"Infocard", description:"Chauffeured travel to / from airports"}
     ]},
     {name:"AnyVan", commission:"30% per booking", benefit:"€20 / £20 off order", amenities:[
-      {name:"Home Removals", location:"UK", setup:"Infocard"},
-      {name:"Mudanzas Sin Estrés", location:"ES", setup:"Infocard"}
+      {name:"Home Removals", location:"UK", setup:"Infocard", description:"Home Moving Services"},
+      {name:"Mudanzas Sin Estrés", location:"ES", setup:"Infocard", description:"Home Moving Services"}
     ]},
     {name:"Cooltra", commission:"22% Approx.", benefit:"Upto 74% off", amenities:[
-      {name:"Cooltra x Holded", location:"ES", setup:"Subscription"},
-      {name:"Cooltra - Movilidad Eléctrica", location:"ES", setup:"Subscription"}
+      {name:"Cooltra x Holded", location:"ES", setup:"Subscription", description:"Mobility Subscription - bicycles, bikes and scooters"},
+      {name:"Cooltra - Movilidad Eléctrica", location:"ES", setup:"Subscription", description:"Mobility Subscription - bicycles, bikes and scooters"}
     ]},
     {name:"El Colibri", commission:"5%- 10%", benefit:"Exclusive prices", amenities:[
-      {name:"Lavado de Coches", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"Lavado de Coches", location:"ES", setup:"Professional Service / Marketplace", description:"Car wash, cleaning and detailing"}
     ]},
     {name:"Cafler", commission:"9%", benefit:"B2B Prices", amenities:[
-      {name:"ITV a domicilio", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"ITV a domicilio", location:"ES", setup:"Professional Service / Marketplace", description:"Car detailing, cleaning and inspection"}
     ]}
   ]},
   {name:"Food", partners:[
     {name:"Fruiful Office", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Fruit & Veggie Boxes", location:"UK", setup:"Professional Service / Marketplace"}
+      {name:"Fruit & Veggie Boxes", location:"UK", setup:"Professional Service / Marketplace", description:"Recurring fruit box delivery to your doorstep"}
     ]},
     {name:"DineIndulge / Meals.co.uk", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Meal Prep Service", location:"UK", setup:"Infocard", commission:"5% of total service charge", benefit:"£100 off first order"},
-      {name:"Private Chef", location:"UK", setup:"Professional Service / Marketplace", commission:"5%", benefit:"5% off"}
+      {name:"Meal Prep Service", location:"UK", setup:"Infocard", commission:"5% of total service charge", benefit:"£100 off first order", description:"Chef prepares meals for the week at your home"},
+      {name:"Private Chef", location:"UK", setup:"Professional Service / Marketplace", commission:"5%", benefit:"5% off", description:"Chef cooks a private meal at your home"}
     ]},
     {name:"Fudeat", commission:"5%", benefit:"5% on first 50 orders", amenities:[
-      {name:"Catering", location:"ES", setup:"Webview Integration"}
+      {name:"Catering", location:"ES", setup:"Webview Integration", description:"Catering services for a group"}
     ]},
     {name:"Knoweats", commission:"10€ per subscriber", benefit:"20€ off first order", amenities:[
-      {name:"Comidas Sanas", location:"ES", setup:"Infocard"}
+      {name:"Comidas Sanas", location:"ES", setup:"Infocard", description:"Cooked meal boxes delivered to your door"}
     ]},
     {name:"Disfruta y Verdura", commission:"3%", benefit:"25% off first order", amenities:[
-      {name:"Fruta y Verdura Para Hogar", location:"ES", setup:"Infocard"}
+      {name:"Fruta y Verdura Para Hogar", location:"ES", setup:"Infocard", description:"Recurring fruit box delivery to your doorstep"}
     ]}
   ]},
   {name:"Corporate Amenities", partners:[
     {name:"Vending Sense", commission:"Bespoke - to be discussed", benefit:"B2B Discounted Rates", amenities:[
-      {name:"Smart Vending Machines", location:"UK", setup:"Corporate Referral"}
+      {name:"Smart Vending Machines", location:"UK", setup:"Corporate Referral", description:"Purchase vending machines for your building"}
     ]},
     {name:"Event Disco", commission:"Bespoke - to be discussed", benefit:"B2B Discounted Rates", amenities:[
-      {name:"Food Truck Pop-up", location:"UK", setup:"Corporate Referral"},
-      {name:"Workshops & Live Entertainment", location:"UK", setup:"Corporate Referral"}
+      {name:"Food Truck Pop-up", location:"UK", setup:"Corporate Referral", description:"Book a food truck for your building"},
+      {name:"Workshops & Live Entertainment", location:"UK", setup:"Corporate Referral", description:"Book workshops / entertainment for your building"}
     ]},
     {name:"OneFiiT", commission:"20%", benefit:"B2B Discounted Rates", amenities:[
-      {name:"Virtual Workout Classes", location:"UK", setup:"Corporate Referral"}
+      {name:"Virtual Workout Classes", location:"UK", setup:"Corporate Referral", description:"Convert a communal room into a workout session"}
     ]},
     {name:"Butcamp", commission:"10%", benefit:"B2B Discounted Rates", amenities:[
-      {name:"Olimpiadas para equipos", location:"ES", setup:"Professional Service / Marketplace"}
+      {name:"Olimpiadas para equipos", location:"ES", setup:"Professional Service / Marketplace", description:"Book team building events"}
     ]},
     {name:"Wolly", commission:"5%", benefit:"B2B Discounted Rates", amenities:[
-      {name:"Wolly Amenity (Placeholder)", location:"ES", setup:"Corporate Referral"}
+      {name:"Wolly Amenity (Placeholder)", location:"ES", setup:"Corporate Referral", description:"Home repairs and maintenance services"}
     ]}
   ]}
 ];
@@ -521,18 +521,24 @@ function initSunburst(loc, svgSel, tooltipSel, rootLabel){
     amenityInfoText.selectAll("tspan").remove();
     amenityInfoText.attr("fill", color);
     const lines = [
-      { text: d.data.name, size: 15, weight: 700 },
+      { text: d.data.name, size: 15, weight: 700 }
+    ];
+    if (d.data.description){
+      lines.push({ text: d.data.description, size: 12.5, weight: 400, italic: true });
+    }
+    lines.push(
       { text: "Partner: " + d.data.partner, size: 13, weight: 400 },
       { text: "Commission: " + (d.data.commission || "Not specified"), size: 13, weight: 400 },
       { text: "User benefit: " + (d.data.benefit || "Not specified"), size: 13, weight: 400 },
       { text: "Way of working: " + (d.data.setup || "Not specified"), size: 13, weight: 400 }
-    ];
+    );
     lines.forEach((ln, i) => {
       amenityInfoText.append("tspan")
         .attr("x", 0)
         .attr("dy", i === 0 ? 0 : 22)
         .style("font-size", ln.size)
         .style("font-weight", ln.weight)
+        .style("font-style", ln.italic ? "italic" : "normal")
         .text(ln.text);
     });
     amenityInfo.transition().duration(250).style("opacity", 1);

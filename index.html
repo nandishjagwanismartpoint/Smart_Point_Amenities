@@ -46,7 +46,7 @@
 </div>
 <h1>Smart Point — Amenities by market</h1>
 <p id="counts" style="text-align:center;font-size:13px;color:#515160;margin:0 0 4px;"></p>
-<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 30 Jul 2026</p>
+<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 31 Jul 2026</p>
 <div id="legend2"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
   <div class="chartcol" id="chartcol-UK">
@@ -103,9 +103,9 @@ const dataset = [
     {name:"Owings", commission:"5€ + 21% VAT", benefit:"Exclusive prices", amenities:[
       {name:"Nutricionista y Dietista Clínica", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with nutritionists"},
       {name:"Servicio de Psicología", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with psychologists"},
-      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace", description:"Book a session with nutritionists"}
+      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace", description:"Book a session with physiotherapists"}
     ]},
-    {name:"Alura Wellness", commission:"10% per order (Check with Tati)", benefit:"10% (Check with Tati)", amenities:[
+    {name:"Thai Spa Massages", commission:"10% per order (Check with Tati)", benefit:"None", amenities:[
       {name:"Thai Spa Massage", location:"ES", setup:"Professional Service / Marketplace", description:"Book a spa appointment in Barcelona"}
     ]},
     {name:"Mia Psicologia", commission:"5€ per session", benefit:"Exclusive prices", amenities:[
@@ -115,11 +115,11 @@ const dataset = [
       {name:"Tintoreria", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"},
       {name:"Lavanderia", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"}
     ]},
-    {name:"Gestoría La Ilustración", commission:"10 EUR per new customer", benefit:"None", amenities:[
-      {name:"Asesoría fiscal, laboral, contable", location:"ES", setup:"Infocard", description:"Tax and accounting advisory serviecs"}
-    ]},
     {name:"Grupo Elosa", commission:"Not specified", benefit:"Not specified", amenities:[
       {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None", benefit:"Exclusive prices", description:"Book various cleaning services"}
+    ]},
+    {name:"Gestoría La Ilustración", commission:"10 EUR per new customer", benefit:"None", amenities:[
+      {name:"Asesoría fiscal, laboral, contable", location:"ES", setup:"Infocard", description:"Tax and accounting advisory services"}
     ]},
     {name:"Interdomicilios", commission:"Not specified", benefit:"Not specified", amenities:[
       {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None ; Check with Tati", benefit:"Exclusive prices", description:"Book various cleaning services"}
@@ -134,12 +134,12 @@ const dataset = [
       {name:"Preply", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"},
       {name:"Preply", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"}
     ]},
+    {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off on all orders", amenities:[
+      {name:"Experiencias de Regalo", location:"ES", setup:"Infocard", description:"Buy gift cards for travel / experiences in Europe"}
+    ]},
     {name:"LanguaTalk", commission:"35% recurring commission", benefit:"25% off annual plans", amenities:[
       {name:"AI Language Learning", location:"UK", setup:"Infocard", description:"AI Conversational language learning subscription"},
       {name:"Aprendizaje de Idiomas con IA", location:"ES", setup:"Infocard", description:"AI Conversational language learning subscription"}
-    ]},
-    {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off on all orders", amenities:[
-      {name:"Experiencias de Regalo", location:"ES", setup:"Infocard", description:"Buy gift cards for travel / experiences in Europe"}
     ]},
     {name:"Urban", commission:"5% of all orders", benefit:"5% off first order", amenities:[
       {name:"Massages at Home", location:"UK", setup:"Infocard", commission:"5% all orders", benefit:"5% new users", description:"Book massages / wellness services for your home"}
@@ -230,7 +230,7 @@ const dataset = [
       {name:"Virtual Workout Classes", location:"UK", setup:"Corporate Referral", description:"Convert a communal room into a workout session"}
     ]},
     {name:"Butcamp", commission:"10%", benefit:"B2B Discounted Rates", amenities:[
-      {name:"Olimpiadas para equipos", location:"ES", setup:"Professional Service / Marketplace", description:"Book team building events"}
+      {name:"Olimpiadas para equipos", location:"ES", setup:"Corporate Referral", description:"Book team building events"}
     ]},
     {name:"Wolly", commission:"5%", benefit:"B2B Discounted Rates", amenities:[
       {name:"Wolly Amenity (Placeholder)", location:"ES", setup:"Corporate Referral", description:"Home repairs and maintenance services"}

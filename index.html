@@ -48,7 +48,7 @@
 </div>
 <h1>Smart Point — Amenities by market</h1>
 <p id="counts" style="text-align:center;font-size:13px;color:#515160;margin:0 0 4px;"></p>
-<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 04 Sep 2026</p>
+<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 07 Sep 2026</p>
 <div id="legend2"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
   <div class="chartcol" id="chartcol-UK">
@@ -99,8 +99,8 @@ const dataset = [
     {name:"Laundryheap", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
       {name:"Laundry Service", location:"UK", setup:"Infocard", description:"Laundry pick-up and delivered to your door"}
     ]},
-    {name:"Unbiased", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
-      {name:"Financial Advice", location:"UK", setup:"Infocard", description:"Online sessions with financial advisors", commission:"£5 per customer", benefit:"First Consultation Free"}
+    {name:"Unbiased", commission:"£5 per customer", benefit:"20% off first order", amenities:[
+      {name:"Financial Advice", location:"UK", setup:"Infocard", description:"Online sessions with financial advisors", benefit:"First Consultation Free"}
     ]},
     {name:"Owings", commission:"5€ + 21% VAT", benefit:"Exclusive prices", amenities:[
       {name:"Nutricionista y Dietista Clínica", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with nutritionists"},
@@ -175,8 +175,8 @@ const dataset = [
     {name:"Brooklyn Fitboxing", commission:"Not specified", benefit:"Not specified", amenities:[
       {name:"Brooklyn Fitboxing Subscription", location:"ES", setup:"Infocard", description:"Subscription to Fitboxing classes", commission:"€5 for every Web Offer (trial session) booked ; €10 for every new membership subscription ; €1 for every recurring monthly payment, starting from the second month", benefit:"€5 discount on their trial session ; €10 discount on their membership sign-up ; €5 discount on every recurring monthly membership fee"}
     ]},
-    {name:"Buyagift / Moonpig", commission:"Not specified", benefit:"Not specified", amenities:[
-    ]}
+    {name:"Buyagift / Moonpig", commission:"Not specified", benefit:"Not specified", amenities:[]},
+    {name:"Dragonpass", commission:"Not specified", benefit:"Not specified", amenities:[]}
   ]},
   {name:"Kids", partners:[
     {name:"Bubble", commission:"None ; to be discussed after trial period", benefit:"£15 off first order", amenities:[

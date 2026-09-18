@@ -48,7 +48,7 @@
 </div>
 <h1>Smart Point — Amenities by market</h1>
 <p id="counts" style="text-align:center;font-size:13px;color:#515160;margin:0 0 4px;"></p>
-<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 14 Sep 2026</p>
+<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 18 Sep 2026</p>
 <div id="legend2"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
   <div class="chartcol" id="chartcol-UK">
@@ -135,8 +135,8 @@ const dataset = [
     {name:"Preply", commission:"$30 per trial lesson + $50 - $120 per conversion", benefit:"70% off trial lesson", amenities:[
       {name:"Preply UK", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"},
       {name:"Preply ES", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"},
-      {name:"Preply Events Promo", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"},
-      {name:"Preply Events Promo", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"}
+      {name:"Preply Events Promo", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"},
+      {name:"Preply Events Promo", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"}
     ]},
     {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off on all orders", amenities:[
       {name:"Experiencias de Regalo", location:"ES", setup:"Infocard", description:"Buy gift cards for travel / experiences in Europe"}
@@ -151,11 +151,13 @@ const dataset = [
     {name:"OccasionGenius", commission:"None ; we pay $300 per month", benefit:"None", amenities:[
       {name:"Local Events", location:"ES", setup:"Feed", description:"Composite feed of events happening in your city"}
     ]},
-    {name:"Urban Sports Club / Wellhub", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Multi-Gym Pass", location:"ES", setup:"Subscription", description:"Subscription to one gym-pass with multiple partner gyms", commission:"27€ per user, per month", benefit:"40% off"}
+    {name:"Urban Sports Club / Wellhub", commission:"27€ per user, per month", benefit:"40% off", amenities:[
+      {name:"Multi-Gym Pass", location:"ES", setup:"Subscription", description:"Subscription to one gym-pass with multiple partner gyms"}
     ]},
     {name:"Fever", commission:"6% of sales", benefit:"None", amenities:[
-      {name:"Movie Theatre Tickets", location:"UK", setup:"Infocard", description:"Buy vouchers for local movie theatres"},
+      {name:"Local Events", location:"UK", setup:"Infocard", description:"Buy tickets for local events"},
+      {name:"Local Events (copy)", location:"ES", setup:"Infocard", description:"Buy tickets for local events"},
+      {name:"Movie Theatre Tickets Edinburgh", location:"UK", setup:"Infocard", description:"Buy vouchers for local movie theatres"},
       {name:"Outdoor Games Edinburgh", location:"UK", setup:"Infocard", description:"Buy tickets for local outdoor events"}
     ]},
     {name:"Playtomic", commission:"10 EUR per new customer", benefit:"30% off off-peak hours", amenities:[
@@ -172,11 +174,13 @@ const dataset = [
     {name:"Fresha (No Agreement Yet)", commission:"Not specified", benefit:"Not specified", amenities:[
       {name:"Massage in Spa (Rest of Spain)", location:"ES", setup:"Not specified"}
     ]},
-    {name:"Brooklyn Fitboxing", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Brooklyn Fitboxing Subscription", location:"ES", setup:"Infocard", description:"Subscription to Fitboxing classes", commission:"€5 for every Web Offer (trial session) booked ; €10 for every new membership subscription ; €1 for every recurring monthly payment, starting from the second month", benefit:"€5 discount on their trial session ; €10 discount on their membership sign-up ; €5 discount on every recurring monthly membership fee"}
+    {name:"Brooklyn Fitboxing", commission:"€5 for every Web Offer (trial session) booked ; €10 for every new membership subscription ; €1 for every recurring monthly payment, starting from the second month", benefit:"€5 discount on their trial session ; €10 discount on their membership sign-up ; €5 discount on every recurring monthly membership fee", amenities:[
+      {name:"Brooklyn Fitboxing Subscription", location:"ES", setup:"Infocard", description:"Subscription to Fitboxing classes"}
     ]},
-    {name:"Buyagift / Moonpig", commission:"Not specified", benefit:"Not specified", amenities:[]},
-    {name:"Dragonpass", commission:"Not specified", benefit:"Not specified", amenities:[]}
+    {name:"Buyagift / Moonpig", commission:"Not specified", benefit:"Not specified", amenities:[
+    ]},
+    {name:"Dragonpass", commission:"Not specified", benefit:"Not specified", amenities:[
+    ]}
   ]},
   {name:"Kids", partners:[
     {name:"Bubble", commission:"None ; to be discussed after trial period", benefit:"£15 off first order", amenities:[
@@ -191,6 +195,9 @@ const dataset = [
       {name:"Dog Walker", location:"UK", setup:"Professional Service / Marketplace", description:"Book a dog walker"},
       {name:"Doggy Day Care", location:"UK", setup:"Professional Service / Marketplace", description:"Supervised care for full / half day"},
       {name:"Dog Boarding", location:"UK", setup:"Professional Service / Marketplace", description:"Book a multi-day stay for your dog"}
+    ]},
+    {name:"Tailster", commission:"None ; Reassessed post pilot", benefit:"£20 off first order", amenities:[
+      {name:"Pet Care Services", location:"UK", setup:"Infocard", description:"Multiple Pet Related Amenities"}
     ]}
   ]},
   {name:"Mobility", partners:[
@@ -226,7 +233,8 @@ const dataset = [
       {name:"Private Chef", location:"UK", setup:"Professional Service / Marketplace", description:"Chef cooks a private meal at your home", commission:"5%", benefit:"5% off"}
     ]},
     {name:"Fudeat", commission:"5%", benefit:"5% on first 50 orders", amenities:[
-      {name:"Catering", location:"ES", setup:"Webview Integration", description:"Catering services for a group"}
+      {name:"Catering", location:"ES", setup:"Webview Integration", description:"Catering services for a group"},
+      {name:"Canteen", location:"ES", setup:"Webview Integration", description:"Canteen services for individuals"}
     ]},
     {name:"Knoweats", commission:"10€ per subscriber", benefit:"20€ off first order", amenities:[
       {name:"Comidas Sanas", location:"ES", setup:"Infocard", description:"Cooked meal boxes delivered to your door"}

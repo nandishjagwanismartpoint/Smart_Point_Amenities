@@ -382,8 +382,8 @@ function chart(m){
   });
   const rf = 40;
   out += '<g data-act="center" style="cursor:pointer"><circle cx="'+C+'" cy="'+C+'" r="'+(R0-4)+'" fill="var(--dash-tint)"/>'
-    + '<svg x="'+(C-rf)+'" y="'+(C-rf-8)+'" width="'+(rf*2)+'" height="'+(rf*2)+'" viewBox="0 0 60 60"><defs><clipPath id="cf-'+m.id+'"><circle cx="30" cy="30" r="30"/></clipPath></defs><g clip-path="url(#cf-'+m.id+')">'+FLAGS[m.id]+'</g><circle cx="30" cy="30" r="29.6" fill="none" stroke="rgba(25,28,37,.18)" stroke-width=".8"/></svg>'
-    + '<text x="'+C+'" y="'+(C+rf-2)+'" text-anchor="middle" dominant-baseline="central" style="font-size:11px;fill:var(--dash-muted)">'+(z != null ? 'Zoom out' : 'Close')+'</text>'
+    + '<svg x="'+(C-rf)+'" y="'+(C-rf-(z != null ? 8 : 0))+'" width="'+(rf*2)+'" height="'+(rf*2)+'" viewBox="0 0 60 60"><defs><clipPath id="cf-'+m.id+'"><circle cx="30" cy="30" r="30"/></clipPath></defs><g clip-path="url(#cf-'+m.id+')">'+FLAGS[m.id]+'</g><circle cx="30" cy="30" r="29.6" fill="none" stroke="rgba(25,28,37,.18)" stroke-width=".8"/></svg>'
+    + (z != null ? '<text x="'+C+'" y="'+(C+rf-2)+'" text-anchor="middle" dominant-baseline="central" style="font-size:11px;fill:var(--dash-muted)">Zoom out</text>' : '')
     + '<title>'+(z != null ? 'Zoom out' : 'Close chart')+'</title></g>';
   return '<svg viewBox="0 0 '+S+' '+S+'" role="img" aria-label="'+esc(m.name)+' amenities sunburst">'+out+'</svg>';
 }

@@ -48,7 +48,7 @@
 </div>
 <h1>Smart Point — Amenities by market</h1>
 <p id="counts" style="text-align:center;font-size:13px;color:#515160;margin:0 0 4px;"></p>
-<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 25 Sep 2026</p>
+<p style="text-align:center;font-size:11px;color:#969CA3;margin:0 0 14px;">Last updated from monday.com: 13 Oct 2026</p>
 <div id="legend2"></div>
 <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center;">
   <div class="chartcol" id="chartcol-UK">
@@ -93,35 +93,35 @@ const dataset = [
   {name:"Assistance", partners:[
     {name:"Fantastic Services", commission:"10% of all orders", benefit:"5% - 25% off on all orders", amenities:[
       {name:"Cleaning Service", location:"UK", setup:"Professional Service / Infocard (A/B Test)", description:"Book various cleaning services"},
-      {name:"Gardening", location:"UK", setup:"Infocard", description:"Book gardening services"},
-      {name:"Handyman Services", location:"UK", setup:"Infocard", description:"Book home maintenance / handyman services"}
+      {name:"Handyman Services", location:"UK", setup:"Infocard", description:"Book home maintenance / handyman services"},
+      {name:"Gardening", location:"UK", setup:"Infocard", description:"Book gardening services"}
     ]},
     {name:"Laundryheap", commission:"0% - 15% of revenue", benefit:"20% off first order", amenities:[
       {name:"Laundry Service", location:"UK", setup:"Infocard", description:"Laundry pick-up and delivered to your door"}
     ]},
     {name:"Unbiased", commission:"£5 per customer", benefit:"20% off first order", amenities:[
-      {name:"Financial Advice", location:"UK", setup:"Infocard", description:"Online sessions with financial advisors", benefit:"First Consultation Free"}
+      {name:"Financial Advice", location:"UK", setup:"Infocard", benefit:"First Consultation Free", description:"Online sessions with financial advisors"}
     ]},
     {name:"Owings", commission:"5€ + 21% VAT", benefit:"Exclusive prices", amenities:[
       {name:"Nutricionista y Dietista Clínica", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with nutritionists"},
-      {name:"Servicio de Psicología", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with psychologists"},
-      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace", description:"Book a session with physiotherapists"}
+      {name:"Servicio de Fisioterapia", location:"ES", setup:"Professional Service / Marketplace", description:"Book a session with physiotherapists"},
+      {name:"Servicio de Psicología", location:"ES", setup:"Professional Service / Marketplace", description:"Book online / offline sessions with psychologists"}
     ]},
     {name:"Mia Psicologia", commission:"5€ per session", benefit:"Exclusive prices", amenities:[
       {name:"Psicologia", location:"ES", setup:"Professional Service / Marketplace", description:"Book online sessions with psychologists"}
     ]},
     {name:"Lavalocker", commission:"Own Service", benefit:"Exclusive prices", amenities:[
-      {name:"Tintoreria", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"},
-      {name:"Lavanderia", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"}
+      {name:"Lavanderia", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"},
+      {name:"Tintoreria", location:"ES", setup:"Professional Service / Marketplace", description:"Laundry pick-up and delivered to your door"}
     ]},
     {name:"Grupo Elosa", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", description:"Book various cleaning services", commission:"None", benefit:"Exclusive prices"}
+      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None", benefit:"Exclusive prices", description:"Book various cleaning services"}
     ]},
     {name:"Gestoría La Ilustración", commission:"10 EUR per new customer", benefit:"None", amenities:[
       {name:"Asesoría fiscal, laboral, contable", location:"ES", setup:"Infocard", description:"Tax and accounting advisory services"}
     ]},
     {name:"Interdomicilios", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", description:"Book various cleaning services", commission:"None ; Check with Tati", benefit:"Exclusive prices"}
+      {name:"Limpieza por horas", location:"ES", setup:"Professional Service / Marketplace", commission:"None ; Check with Tati", benefit:"Exclusive prices", description:"Book various cleaning services"}
     ]},
     {name:"Oneder", commission:"10%", benefit:"10%", amenities:[
       {name:"Coworking Pass", location:"UK", setup:"Professional Service / Marketplace", description:"Coworking Day Passes in London"}
@@ -135,10 +135,10 @@ const dataset = [
     {name:"Preply", commission:"$30 per trial lesson + $50 - $120 per conversion", benefit:"70% off trial lesson", amenities:[
       {name:"Preply UK", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"},
       {name:"Preply ES", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"},
-      {name:"Preply Events Promo", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"},
-      {name:"Preply Events Promo", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"}
+      {name:"Preply Events Promo", location:"ES", setup:"Infocard", description:"Online one-on-one language learning classes"},
+      {name:"Preply Events Promo", location:"UK", setup:"Infocard", description:"Online one-on-one language learning classes"}
     ]},
-    {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off on all orders", amenities:[
+    {name:"Wonderbox", commission:"5% of net sales", benefit:"15% off for orders equal or superior to €49.90", amenities:[
       {name:"Experiencias de Regalo", location:"ES", setup:"Infocard", description:"Buy gift cards for travel / experiences in Europe"}
     ]},
     {name:"LanguaTalk", commission:"35% recurring commission", benefit:"25% off annual plans", amenities:[
@@ -146,19 +146,23 @@ const dataset = [
       {name:"Aprendizaje de Idiomas con IA", location:"ES", setup:"Infocard", description:"AI Conversational language learning subscription"}
     ]},
     {name:"Urban.co Massages", commission:"5% of all orders", benefit:"5% off first order", amenities:[
-      {name:"Massages at Home", location:"UK", setup:"Professional Service / Marketplace", description:"Book massages / wellness services for your home", commission:"5% all orders", benefit:"5% new users"}
+      {name:"Massages at Home", location:"UK", setup:"Professional Service / Marketplace", commission:"5% all orders", benefit:"5% new users", description:"Book massages / wellness services for your home"}
     ]},
     {name:"OccasionGenius", commission:"None ; we pay $300 per month", benefit:"None", amenities:[
       {name:"Local Events", location:"ES", setup:"Feed", description:"Composite feed of events happening in your city"}
     ]},
-    {name:"Urban Sports Club / Wellhub", commission:"27€ per user, per month", benefit:"40% off", amenities:[
+    {name:"Urban Sports Club (Old)", commission:"27€ per user, per month", benefit:"40% off", amenities:[
       {name:"Multi-Gym Pass", location:"ES", setup:"Subscription", description:"Subscription to one gym-pass with multiple partner gyms"}
     ]},
+    {name:"WellHub", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Wellhub Subscription (ES)", location:"ES", setup:"Subscription", commission:"11.50 EUR / month", benefit:"B2B rates (Over 40%)", description:"Subscription to one gym-pass with multiple partner gyms"},
+      {name:"Wellhub Subscription (UK)", location:"UK", setup:"Subscription", commission:"25 GBP / month", benefit:"B2B rates (Over 40%)", description:"Subscription to one gym-pass with multiple partner gyms"}
+    ]},
     {name:"Fever", commission:"6% of sales", benefit:"None", amenities:[
-      {name:"Local Events", location:"UK", setup:"Infocard", description:"Buy tickets for local events"},
-      {name:"Local Events (copy)", location:"ES", setup:"Infocard", description:"Buy tickets for local events"},
+      {name:"Outdoor Games Edinburgh", location:"UK", setup:"Infocard", description:"Buy tickets for local outdoor events"},
       {name:"Movie Theatre Tickets Edinburgh", location:"UK", setup:"Infocard", description:"Buy vouchers for local movie theatres"},
-      {name:"Outdoor Games Edinburgh", location:"UK", setup:"Infocard", description:"Buy tickets for local outdoor events"}
+      {name:"Local Events", location:"UK", setup:"Infocard", description:"Buy tickets for local events"},
+      {name:"Movie Theatre Tickets Madrid", location:"ES", setup:"Infocard", description:"Buy vouchers for local movie theatres"}
     ]},
     {name:"Playtomic", commission:"10 EUR per new customer", benefit:"30% off off-peak hours", amenities:[
       {name:"Padel Court Reservation", location:"ES", setup:"Infocard", description:"Reserve nearby padel courts"}
@@ -167,9 +171,9 @@ const dataset = [
       {name:"Flower Delivery", location:"UK", setup:"Professional Service / Marketplace", description:"Get flowers delivered to your door"}
     ]},
     {name:"Thai Spa Massages", commission:"10% per order (Check with Tati)", benefit:"None", amenities:[
-      {name:"Masaje en Spa (BCN only)", location:"ES", setup:"Professional Service / Marketplace", description:"Full body massage in a Spa", commission:"10-15%"},
-      {name:"Masaje en Pareja (BCN only)", location:"ES", setup:"Professional Service / Marketplace", description:"Couples massage in a Spa", commission:"10-15%"},
-      {name:"Masaje Localizado (BCN only)", location:"ES", setup:"Professional Service / Marketplace", description:"Light or localized short massage in Spa", commission:"10-15%"}
+      {name:"Masaje en Spa (BCN only)", location:"ES", setup:"Professional Service / Marketplace", commission:"10-15%", description:"Full body massage in a Spa"},
+      {name:"Masaje Localizado (BCN only)", location:"ES", setup:"Professional Service / Marketplace", commission:"10-15%", description:"Light or localized short massage in Spa"},
+      {name:"Masaje en Pareja (BCN only)", location:"ES", setup:"Professional Service / Marketplace", commission:"10-15%", description:"Couples massage in a Spa"}
     ]},
     {name:"Fresha (No Agreement Yet)", commission:"Not specified", benefit:"Not specified", amenities:[
       {name:"Massage in Spa (Rest of Spain)", location:"ES", setup:"Not specified"}
@@ -178,8 +182,7 @@ const dataset = [
       {name:"Brooklyn Fitboxing Subscription", location:"ES", setup:"Infocard", description:"Subscription to Fitboxing classes"}
     ]},
     {name:"Buyagift / Moonpig", commission:"Not specified", benefit:"Not specified", amenities:[
-    ]},
-    {name:"Dragonpass", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Gift Experiences", location:"UK", setup:"Professional Service / Marketplace", commission:"10%", benefit:"10% off", description:"Buy gift cards for experiences in UK"}
     ]}
   ]},
   {name:"Kids", partners:[
@@ -192,8 +195,8 @@ const dataset = [
   ]},
   {name:"Pets", partners:[
     {name:"Pawshake (No Agreement Yet)", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Dog Walker", location:"UK", setup:"Professional Service / Marketplace", description:"Book a dog walker"},
       {name:"Doggy Day Care", location:"UK", setup:"Professional Service / Marketplace", description:"Supervised care for full / half day"},
+      {name:"Dog Walker", location:"UK", setup:"Professional Service / Marketplace", description:"Book a dog walker"},
       {name:"Dog Boarding", location:"UK", setup:"Professional Service / Marketplace", description:"Book a multi-day stay for your dog"}
     ]},
     {name:"Tailster", commission:"None ; Reassessed post pilot", benefit:"£20 off first order", amenities:[
@@ -210,8 +213,8 @@ const dataset = [
       {name:"Traslados VIP al Aeropuerto", location:"ES", setup:"Infocard", description:"Chauffeured travel to / from airports"}
     ]},
     {name:"AnyVan", commission:"30% per booking", benefit:"€20 / £20 off order", amenities:[
-      {name:"Home Removals", location:"UK", setup:"Infocard", description:"Home Moving Services"},
-      {name:"Mudanzas Sin Estrés", location:"ES", setup:"Infocard", description:"Home Moving Services"}
+      {name:"Mudanzas Sin Estrés", location:"ES", setup:"Infocard", description:"Home Moving Services"},
+      {name:"Home Removals", location:"UK", setup:"Infocard", description:"Home Moving Services"}
     ]},
     {name:"Cooltra", commission:"22% Approx.", benefit:"Upto 74% off", amenities:[
       {name:"Cooltra x Holded", location:"ES", setup:"Subscription", description:"Mobility Subscription - bicycles, bikes and scooters"},
@@ -229,8 +232,8 @@ const dataset = [
       {name:"Fruit & Veggie Boxes", location:"UK", setup:"Professional Service / Marketplace", description:"Recurring fruit box delivery to your doorstep"}
     ]},
     {name:"DineIndulge / Meals.co.uk", commission:"Not specified", benefit:"Not specified", amenities:[
-      {name:"Personal Chef Meal Prep", location:"UK", setup:"Infocard", description:"Chef prepares meals for the week at your home", commission:"5% of total service charge", benefit:"£100 off first order"},
-      {name:"Private Chef", location:"UK", setup:"Professional Service / Marketplace", description:"Chef cooks a private meal at your home", commission:"5%", benefit:"5% off"}
+      {name:"Personal Chef Meal Prep", location:"UK", setup:"Infocard", commission:"5% of total service charge", benefit:"£100 off first order", description:"Chef prepares meals for the week at your home"},
+      {name:"Private Chef", location:"UK", setup:"Professional Service / Marketplace", commission:"5%", benefit:"5% off", description:"Chef cooks a private meal at your home"}
     ]},
     {name:"Fudeat", commission:"5%", benefit:"5% on first 50 orders", amenities:[
       {name:"Catering", location:"ES", setup:"Webview Integration", description:"Catering services for a group"},
@@ -241,6 +244,12 @@ const dataset = [
     ]},
     {name:"Disfruta y Verdura", commission:"3%", benefit:"25% off first order", amenities:[
       {name:"Fruta y Verdura Para Hogar", location:"ES", setup:"Infocard", description:"Recurring fruit box delivery to your doorstep"}
+    ]},
+    {name:"Alsea / Club.by", commission:"None ; Onboarding Pilot", benefit:"10% off partner brands", amenities:[
+      {name:"Ventajas en Restaurantes", location:"ES", setup:"Webview Form", description:"Local Commerce Offers"}
+    ]},
+    {name:"Refruiting", commission:"Not specified", benefit:"Not specified", amenities:[
+      {name:"Fruit Box Delivery", location:"ES", setup:"Professional Service / Marketplace", commission:"16% (on average) - we can decide ourselves", benefit:"Exclusive B2B rates", description:"Recurring fruit box delivery to your doorstep"}
     ]}
   ]},
   {name:"Corporate Amenities", partners:[

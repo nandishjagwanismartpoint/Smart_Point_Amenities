@@ -70,6 +70,7 @@ article{background:var(--white);border:1px solid var(--dash-line);border-radius:
 .dd{margin:0;font-size:15px;line-height:1.45;color:var(--dash-muted)}
 .rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .rows div{background:var(--white);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.rows.r3{grid-template-columns:repeat(3,1fr)}@media(max-width:700px){.rows.r3{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}}
 .rows small{font-size:13px;color:var(--dash-muted)}
 .rows strong{font-size:16px;font-weight:700;color:var(--deck-ink)}
 @media(max-width:700px){header,main{padding-left:16px;padding-right:16px}.hero{padding:20px}}
@@ -402,7 +403,7 @@ function detail(m){
     return '<div class="dh">'+chip(c.name,key)+'<span class="sub">'+esc(am.setup)+'</span></div>'
       + '<div class="dt">'+esc(am.name)+'</div>'
       + (am.description ? '<p class="dd">'+esc(am.description)+'</p>' : '')
-      + '<div class="rows"><div><small>Partner</small><strong>'+esc(am.partner)+'</strong></div><div><small>Commission</small><strong>'+esc(am.commission)+'</strong></div><div><small>Status</small><strong>'+esc(STATUS[am.status].label)+'</strong></div><div><small>User benefit</small><strong>'+esc(am.benefit)+'</strong></div></div>';
+      + '<div class="rows r3"><div><small>Partner</small><strong>'+esc(am.partner)+'</strong></div><div><small>Commission</small><strong>'+esc(am.commission)+'</strong></div><div><small>User benefit</small><strong>'+esc(am.benefit)+'</strong></div><div><small>Status</small><strong>'+esc(STATUS[am.status].label)+'</strong></div></div>';
   }
   if (z != null){
     const c = m.categories[z], key = CATS[c.name] || 'services';
